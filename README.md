@@ -39,7 +39,7 @@ Community announcements
 USAGE
 
 Open the application
-Select the required feature such as navigation transport information, local services provoded cy companies
+Select the required feature such as navigation transport information, local services provoded by companies
 Follow the on-screen instructions
 
 
