@@ -22,7 +22,7 @@ Town navigation
 Simple maps for moving around ITTI
 Key locations such as shops, services, and public places
 
-AT-JOME WORKOUTS
+AT-HOME WORKOUTS
 Guided workout routines designed for home use
 No gym or equipment required
 
