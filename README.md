@@ -19,23 +19,28 @@ Municipal or community organizers
 FEATURES
 
 Town navigation
+
 Simple maps for moving around ITTI
 Key locations such as shops, services, and public places
 
 AT-HOME WORKOUTS
+
 Guided workout routines designed for home use
 No gym or equipment required
 
 TRANSPORT INFORMATION
+
 School bus schedule for in-town and out-of-town travel
 Clear timetables and reminders
 
 LOCAL INFOMRATION AND SERVICES
+
 Information about shops and services
 Emergency contacts
 Community announcements
 
 AI TAXI ROUTE OPTIMAZATION
+
 AI-powered routing tool for taxi drivers
 Optimized routes for picking up multiple passengers
 Reduced travel time and fuel usage
