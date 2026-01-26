@@ -28,10 +28,6 @@ AT-HOME WORKOUTS
 Guided workout routines designed for home use
 No gym or equipment required
 
-TRANSPORT INFORMATION
-
-School bus schedule for in-town and out-of-town travel
-Clear timetables and reminders
 
 LOCAL INFOMRATION AND SERVICES
 
@@ -39,30 +35,13 @@ Information about shops and services
 Emergency contacts
 Community announcements
 
-AI TAXI ROUTE OPTIMAZATION
-
-Smart routing prototype tool for taxi drivers
-Optimized routes for picking up multiple passengers
-Reduced travel time and fuel usage
-
-GETTING STARTED
-
-Prerequisites
-Smartphone (Android or iOS)
-Internet connection
-Node.js and Git for development
-
-INSTALLATION
-
-Clone the project repository
-Install dependencies
-Configure environment variables
 
 USAGE
 
 Open the application
-Select the required feature such as navigation, workouts, transport information, local services, or taxi routing
+Select the required feature such as navigation transport information, local services provoded cy companies
 Follow the on-screen instructions
+
 
 PROJECT STRUCTURE
 
@@ -75,6 +54,7 @@ Public assets
 Tests
 Configuration files
 
+
 TECH STACK
 
 Frontend: React or React Native
@@ -83,19 +63,7 @@ AI routing: Custom algorithm or external AI API
 Maps: OpenStreetMap or Google Maps
 Database: MongoDB or Firebase
 
-ARCHITECTURE OVERVIEW
 
-Mobile client communicates with a backend API
-AI module processes taxi routing requests
-Central database stores town information and schedules
-Modular architecture for scalability
-
-TESTING
-
-Unit testing for core logic
-Integration testing for backend services
-Manual testing for user interface
-Automated testing planned
 
 
 
