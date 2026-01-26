@@ -47,7 +47,7 @@ Smartphone (Android or iOS)
 Internet connection
 Node.js and Git for development
 
-INSTALATION
+INSTALLATION
 
 Clone the project repository
 Install dependencies
