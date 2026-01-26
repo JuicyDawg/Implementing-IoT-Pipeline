@@ -41,7 +41,7 @@ Community announcements
 
 AI TAXI ROUTE OPTIMAZATION
 
-AI-powered routing tool for taxi drivers
+Smart routing prototype tool for taxi drivers
 Optimized routes for picking up multiple passengers
 Reduced travel time and fuel usage
 
@@ -75,7 +75,7 @@ Public assets
 Tests
 Configuration files
 
-TEACH STACK
+TECH STACK
 
 Frontend: React or React Native
 Backend: Node.js with Express
@@ -97,18 +97,5 @@ Integration testing for backend services
 Manual testing for user interface
 Automated testing planned
 
-CI/CD ANS DEPLOYMENT
-
-Continuous integration planned using GitHub Actions
-Automated testing on pull requests
-Cloud deployment planned
-
-ROADMAP
-
-Minimum viable product
-Improved AI taxi routing
-Offline access to information
-Multi-language support
-Administrative dashboard
 
 
