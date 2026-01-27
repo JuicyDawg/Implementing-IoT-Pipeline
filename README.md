@@ -7,18 +7,17 @@ WHY DOES IT EXIST?
 Limited public transportation
 Lack of centralized local information
 Limited access to gyms or sports facilities
-Inefficient taxi usage due to unoptimized routes
+
 
 TARGET AUDIENCE
 
 Residents of ITTI
-Local taxi drivers
 Visitors to the town
 Municipal or community organizers
 
 FEATURES
 
-Town navigation
+Town Navigation
 
 Simple maps for moving around ITTI
 Key locations such as shops, services, and public places
@@ -49,7 +48,6 @@ Source code directory
 Components
 Screens
 Services
-AI module
 Public assets
 Tests
 Configuration files
