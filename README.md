@@ -68,15 +68,13 @@ Node.js – JavaScript runtime used to run the server
 Express.js – lightweight framework used to create API routes
 The backend provides basic REST API endpoints that return data related to the town, such as places, bus routes, and activities.
 
-Data Handling
-JSON files – used to store and serve data
-JSON is used instead of a database to keep the project simple and suitable for a student-level demonstration.
+
 
 Machine Learning (Coursework – Separate)
 Python
 TensorFlow
 Jupyter Notebook
-Machine learning experiments are developed separately as part of coursework and are not directly integrated into the Town of ITTI application.
+
 
 
 
