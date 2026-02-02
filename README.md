@@ -21,18 +21,9 @@ Town Navigation
 
 Simple maps for moving around ITTI
 Key locations such as shops, services, and public places
-
-AT-HOME WORKOUTS
-
-Guided workout routines designed for home use
-No gym or equipment required
+Busses, taxis
 
 
-LOCAL INFOMRATION AND SERVICES
-
-Information about shops and services
-Emergency contacts
-Community announcements
 
 
 USAGE
