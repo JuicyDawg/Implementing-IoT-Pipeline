@@ -55,12 +55,22 @@ Configuration files
 
 TECH STACK
 
-Frontend: React or React Native
-Backend: Node.js with Express
-AI routing: Custom algorithm or external AI API
-Maps: OpenStreetMap or Google Maps
-Database: MongoDB or Firebase
 
+Frontend
+
+HTML – used to structure the user interface
+CSS – used for styling and layout
+JavaScript – used to handle basic logic and interaction with the backend
+The frontend is kept simple to ensure clarity and ease of understanding. It communicates with the backend using HTTP requests.
+
+Backend
+Node.js – JavaScript runtime used to run the server
+Express.js – lightweight framework used to create API routes
+The backend provides basic REST API endpoints that return data related to the town, such as places, bus routes, and activities.
+
+Data Handling
+JSON files – used to store and serve data
+JSON is used instead of a database to keep the project simple and suitable for a student-level demonstration.
 
 
 
