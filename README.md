@@ -39,7 +39,7 @@ USAGE
 
 Open the application
 Select the required feature such as navigation transport information, local services provoded by companies
-Follow the on-screen instructions
+Follow the step by step on-screen instructions
 
 
 PROJECT STRUCTURE
