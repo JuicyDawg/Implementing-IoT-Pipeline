@@ -24,21 +24,37 @@
   </div>
 
   <script>
-    fetch("http://localhost:3000/places")
-      .then(response => response.json())
-      .then(data => {
-        const list = document.getElementById("places-list");
+  const list = document.getElementById("places-list");
 
-        data.forEach(place => {
-          const item = document.createElement("li");
-          item.textContent = place.name + " (" + place.category + ")";
-          list.appendChild(item);
-        });
-      })
-      .catch(error => {
-        console.error("Error loading town locations:", error);
+ 
+  list.innerHTML = "<li>Loading locations...</li>";
+
+  fetch("http://localhost:3000/places")
+    .then(response => response.json())
+    .then(data => {
+      list.innerHTML = "";
+
+      if (data.length === 0) {
+        list.innerHTML = "<li>No locations available.</li>";
+        return;
+      }
+
+      data.forEach(place => {
+        const item = document.createElement("li");
+        item.textContent =
+          place.name +
+          " – " +
+          place.category +
+          (place.openNow ? " (Open)" : " (Closed)");
+        list.appendChild(item);
       });
-  </script>
+    })
+    .catch(error => {
+      list.innerHTML = "<li>Failed to load locations.</li>";
+      console.error(error);
+    });
+</script>
+
 
 </body>
 </html>
