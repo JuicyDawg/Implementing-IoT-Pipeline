@@ -2,39 +2,43 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>ITTI Smart Town App</title>
+  <title>ITTI Smart Town App Town Navigation</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <h1>ITTI Smart Town App</h1>
-  <p>This is a prototype interface for a smart town application.</p>
+  <p>Prototype focusing on town navigation for the municipality of Iitti.</p>
 
   <div class="section">
     <h2>🗺️ Town Navigation</h2>
-    <p>Find nearby shops and public spaces.</p>
-    <ul>
-      <li>Local Grocery Store</li>
-      <li>City Park</li>
-      <li>Health Center</li>
+    <p>
+      This feature helps users find important locations in Iitti such as shops,
+      public services, and community places.
+    </p>
+
+    <p><strong>Available locations:</strong></p>
+    <ul id="places-list">
+      
     </ul>
   </div>
 
-  <div class="section">
-    <h2> Home Workouts</h2>
-    <p>No equipment needed.</p>
-    <ul>
-      <li>Squats</li>
-      <li>Push-ups</li>
-      <li>Plank</li>
-    </ul>
-  </div>
+  <script>
+    fetch("http://localhost:3000/places")
+      .then(response => response.json())
+      .then(data => {
+        const list = document.getElementById("places-list");
 
-  <div class="section">
-    <h2> Services</h2>
-    <p>Emergency number: <strong>112</strong></p>
-    <p>Community announcement: Road maintenance this week.</p>
-  </div>
+        data.forEach(place => {
+          const item = document.createElement("li");
+          item.textContent = place.name + " (" + place.category + ")";
+          list.appendChild(item);
+        });
+      })
+      .catch(error => {
+        console.error("Error loading town locations:", error);
+      });
+  </script>
 
 </body>
 </html>
