@@ -1,56 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
   <title>ITTI Smart Town App - Town Navigation</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+
   <h1>ITTI Smart Town App</h1>
   <p>Prototype focusing on town navigation for the municipality of Iitti.</p>
 
   <div class="section">
     <h2>🗺️ Town Navigation</h2>
+
     <p>
       This feature helps users find important locations in Iitti such as shops,
       public services, and community places.
     </p>
 
     <p><strong>Available locations:</strong></p>
+
     <ul id="places-list"></ul>
+
   </div>
 
-  <script>
-    const list = document.getElementById("places-list");
-    list.innerHTML = "<li>Loading locations...</li>";
+<script>
 
-    fetch("http://localhost:3000/places")
-      .then(response => {
-        if (!response.ok) {
-          throw new Error("HTTP error! Status: " + response.status);
-        }
-        return response.json();
-      })
-      .then(data => {
-        list.innerHTML = "";
+const list = document.getElementById("places-list");
 
-        if (!data || data.length === 0) {
-          list.innerHTML = "<li>No locations available.</li>";
-          return;
-        }
+list.innerHTML = "<li>Loading locations...</li>";
 
-        data.forEach(place => {
-          const item = document.createElement("li");
-          item.textContent =
-            place.name + " - " + place.category + (place.openNow ? " (Open)" : " (Closed)");
-          list.appendChild(item);
-        });
-      })
-      .catch(error => {
-        list.innerHTML = "<li>Failed to load locations.</li>";
-        console.error("Fetch error:", error);
-      });
-  </script>
+fetch("http://127.0.0.1:3000/places")
+  .then(response => response.json())
+  .then(data => {
+
+    list.innerHTML = "";
+
+    if (!data || data.length === 0) {
+      list.innerHTML = "<li>No locations available.</li>";
+      return;
+    }
+
+    data.forEach(place => {
+
+      const item = document.createElement("li");
+
+      item.textContent =
+        place.name +
+        " - " +
+        place.category +
+        (place.openNow ? " (Open)" : " (Closed)");
+
+      list.appendChild(item);
+
+    });
+
+  })
+  .catch(error => {
+
+    console.error(error);
+    list.innerHTML = "<li>Failed to load locations.</li>";
+
+  });
+
+</script>
+
 </body>
 </html>
