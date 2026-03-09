@@ -1,10 +1,12 @@
+console.log("SERVER FILE STARTED");
+
+
 const express = require("express");
 
 const app = express();
 const PORT = 3000;
 
 app.use(express.json());
-
 
 const places = [
   {
@@ -16,10 +18,10 @@ const places = [
   },
   {
     id: 2,
-    name: "ITTI Local Gym",
-    type: "gym",
-    openNow: false,
-    category: "health"
+    name: "ITTI Library",
+    type: "public",
+    openNow: true,
+    category: "education"
   },
   {
     id: 3,
@@ -37,31 +39,8 @@ const places = [
   }
 ];
 
-
-app.get("/", (req, res) => {
-  res.send("Town of ITTI backend is running");
-});
-
-
 app.get("/places", (req, res) => {
   res.json(places);
-});
-
-
-app.get("/places/filter", (req, res) => {
-  const { type, openNow } = req.query;
-
-  let result = places;
-
-  if (type) {
-    result = result.filter(p => p.type === type);
-  }
-
-  if (openNow !== undefined) {
-    result = result.filter(p => p.openNow === (openNow === "true"));
-  }
-
-  res.json(result);
 });
 
 app.listen(PORT, () => {
