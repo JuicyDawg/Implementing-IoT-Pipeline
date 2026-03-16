@@ -1,49 +1,49 @@
-console.log("SERVER FILE STARTED");
-
 const express = require("express");
 const cors = require("cors");
 
 const app = express();
-const PORT = 3000;
-
 app.use(cors());
-app.use(express.json());
 
 const places = [
-  {
-    id: 1,
-    name: "ITTI City Park",
-    type: "park",
-    openNow: true,
-    category: "recreation"
-  },
-  {
-    id: 2,
-    name: "ITTI Library",
-    type: "public",
-    openNow: true,
-    category: "education"
-  },
-  {
-    id: 3,
-    name: "ITTI Health Center",
-    type: "healthcare",
-    openNow: true,
-    category: "medical"
-  },
-  {
-    id: 4,
-    name: "ITTI Grocery Store",
-    type: "shop",
-    openNow: true,
-    category: "shopping"
-  }
+
+{
+name: "ITTI City Park",
+category: "Recreation",
+days: "Monday - Sunday",
+hours: "06:00 - 22:00",
+openNow: true
+},
+
+{
+name: "ITTI Library",
+category: "Education",
+days: "Monday - Friday",
+hours: "09:00 - 18:00",
+openNow: true
+},
+
+{
+name: "ITTI Health Center",
+category: "Medical",
+days: "Monday - Friday",
+hours: "08:00 - 16:00",
+openNow: false
+},
+
+{
+name: "ITTI Grocery Store",
+category: "Shopping",
+days: "Monday - Sunday",
+hours: "07:00 - 21:00",
+openNow: true
+}
+
 ];
 
 app.get("/places", (req, res) => {
-  res.json(places);
+res.json(places);
 });
 
-app.listen(PORT, () => {
-  console.log("Server running on port", PORT);
+app.listen(3000, () => {
+console.log("Server running on http://127.0.0.1:3000");
 });
