@@ -1,29 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <title>ITTI Smart Town App - Town Navigation</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<title>ITTI Smart Town App</title>
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <h1>ITTI Smart Town App</h1>
-  <p>Prototype focusing on town navigation for the municipality of Iitti.</p>
+<h1>ITTI Smart Town App</h1>
+<p>Prototype focusing on town navigation for the municipality of Iitti.</p>
 
-  <div class="section">
-    <h2>🗺️ Town Navigation</h2>
+<div class="section">
 
-    <p>
-      This feature helps users find important locations in Iitti such as shops,
-      public services, and community places.
-    </p>
+<h2> Town Navigation</h2>
 
-    <p><strong>Available locations:</strong></p>
+<p>
+This feature helps users find important locations in Iitti such as shops,
+public services, and community places.
+</p>
 
-    <ul id="places-list"></ul>
+<h3>Available locations</h3>
 
-  </div>
+<ul id="places-list"></ul>
+
+</div>
 
 <script>
 
@@ -32,37 +34,35 @@ const list = document.getElementById("places-list");
 list.innerHTML = "<li>Loading locations...</li>";
 
 fetch("http://127.0.0.1:3000/places")
-  .then(response => response.json())
-  .then(data => {
+.then(response => response.json())
+.then(data => {
 
-    list.innerHTML = "";
+list.innerHTML = "";
 
-    if (!data || data.length === 0) {
-      list.innerHTML = "<li>No locations available.</li>";
-      return;
-    }
+data.forEach(place => {
 
-    data.forEach(place => {
+const item = document.createElement("li");
 
-      const item = document.createElement("li");
+const status = place.openNow ? "Open" : "Closed";
 
-      item.textContent =
-        place.name +
-        " - " +
-        place.category +
-        (place.openNow ? " (Open)" : " (Closed)");
+item.innerHTML =
+"<strong>" + place.name + "</strong><br>" +
+"Category: " + place.category + "<br>" +
+"Days: " + place.days + "<br>" +
+"Hours: " + place.hours + "<br>" +
+"Status: " + status;
 
-      list.appendChild(item);
+list.appendChild(item);
 
-    });
+});
 
-  })
-  .catch(error => {
+})
+.catch(error => {
 
-    console.error(error);
-    list.innerHTML = "<li>Failed to load locations.</li>";
+console.error(error);
+list.innerHTML = "<li>Failed to load locations.</li>";
 
-  });
+});
 
 </script>
 
