@@ -37,17 +37,17 @@ const places = [
   }
 ];
 
-// 
+// Root route
 app.get("/", (req, res) => {
-  res.send("Server is working bro 🚀");
+  res.send("Server is running successfully.");
 });
 
-//
+// API route
 app.get("/places", (req, res) => {
   res.json(places);
 });
 
-// 
+// Optional filter
 app.get("/places/filter/:category", (req, res) => {
   const category = req.params.category.toLowerCase();
 
@@ -58,7 +58,7 @@ app.get("/places/filter/:category", (req, res) => {
   res.json(filtered);
 });
 
-// START SERVER
+// Start server
 const PORT = 3000;
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
