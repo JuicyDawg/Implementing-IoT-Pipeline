@@ -37,25 +37,17 @@ const places = [
   }
 ];
 
-// Root route
+// Root route (clean message)
 app.get("/", (req, res) => {
-  res.send("Server is running successfully.");
+  res.json({
+    status: "OK",
+    message: "ITTI Smart Town API is running"
+  });
 });
 
 // API route
 app.get("/places", (req, res) => {
   res.json(places);
-});
-
-// Optional filter
-app.get("/places/filter/:category", (req, res) => {
-  const category = req.params.category.toLowerCase();
-
-  const filtered = places.filter(
-    place => place.category.toLowerCase() === category
-  );
-
-  res.json(filtered);
 });
 
 // Start server
