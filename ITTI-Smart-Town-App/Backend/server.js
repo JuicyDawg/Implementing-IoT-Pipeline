@@ -1,57 +1,50 @@
-const express = require("express");
-const cors = require("cors");
-
+const express = require('express');
 const app = express();
-app.use(cors());
-app.use(express.json());
+const PORT = 3000;
 
-// Data
+app.use(express.static('public'));
+
 const places = [
   {
-    name: "ITTI City Park",
-    category: "Recreation",
-    days: "Monday - Sunday",
-    hours: "06:00 - 22:00",
-    openNow: true
-  },
-  {
-    name: "ITTI Library",
-    category: "Education",
-    days: "Monday - Friday",
-    hours: "09:00 - 18:00",
-    openNow: true
-  },
-  {
     name: "ITTI Health Center",
-    category: "Medical",
-    days: "Monday - Friday",
-    hours: "08:00 - 16:00",
-    openNow: false
+    category: "health",
+    open: 8,
+    close: 16,
+    distance: 1.2,
+    description: "Main healthcare center"
   },
   {
-    name: "ITTI Grocery Store",
-    category: "Shopping",
-    days: "Monday - Sunday",
-    hours: "07:00 - 21:00",
-    openNow: true
+    name: "City Gym",
+    category: "fitness",
+    open: 6,
+    close: 22,
+    distance: 0.8,
+    description: "Best gym in town"
+  },
+  {
+    name: "Pizza Spot",
+    category: "food",
+    open: 11,
+    close: 23,
+    distance: 0.5,
+    description: "Fast food and takeaway"
   }
 ];
 
-// Root route (clean message)
-app.get("/", (req, res) => {
-  res.json({
-    status: "OK",
-    message: "ITTI Smart Town API is running"
-  });
+app.get('/places', (req, res) => {
+  const currentHour = new Date().getHours();
+
+  const updatedPlaces = places.map(place => ({
+    ...place,
+    status:
+      currentHour >= place.open && currentHour < place.close
+        ? "Open"
+        : "Closed"
+  }));
+
+  res.json(updatedPlaces);
 });
 
-// API route
-app.get("/places", (req, res) => {
-  res.json(places);
-});
-
-// Start server
-const PORT = 3000;
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
-})
+});
