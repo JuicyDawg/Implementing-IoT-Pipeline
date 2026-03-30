@@ -23,6 +23,9 @@
 
   <h3>Available locations</h3>
 
+  <!-- Search input -->
+  <input type="text" id="search" placeholder="Search locations...">
+
   <ul id="places-list"></ul>
 
 </div>
@@ -30,38 +33,57 @@
 <script>
 
 const list = document.getElementById("places-list");
+const searchInput = document.getElementById("search");
+
+let allPlaces = [];
 
 // Show loading message
 list.innerHTML = "<li>Loading locations...</li>";
 
+// Function to display places
+function displayPlaces(data) {
+  list.innerHTML = "";
+
+  data.forEach(place => {
+
+    const item = document.createElement("li");
+    const status = place.openNow ? "Open" : "Closed";
+
+    item.innerHTML =
+      "<strong>" + place.name + "</strong><br>" +
+      "Category: " + place.category + "<br>" +
+      "Days: " + place.days + "<br>" +
+      "Hours: " + place.hours + "<br>" +
+      "Status: " + status;
+
+    list.appendChild(item);
+  });
+}
+
+// Fetch data from backend
 fetch("http://localhost:3000/places")
   .then(response => response.json())
   .then(data => {
-
-    list.innerHTML = "";
-
-    data.forEach(place => {
-
-      const item = document.createElement("li");
-
-      const status = place.openNow ? "Open" : "Closed";
-
-      item.innerHTML =
-        "<strong>" + place.name + "</strong><br>" +
-        "Category: " + place.category + "<br>" +
-        "Days: " + place.days + "<br>" +
-        "Hours: " + place.hours + "<br>" +
-        "Status: " + status;
-
-      list.appendChild(item);
-
-    });
-
+    allPlaces = data;
+    displayPlaces(allPlaces);
   })
   .catch(error => {
     console.error(error);
     list.innerHTML = "<li>Failed to load locations.</li>";
   });
+
+// Search functionality
+searchInput.addEventListener("input", () => {
+
+  const value = searchInput.value.toLowerCase();
+
+  const filtered = allPlaces.filter(place =>
+    place.name.toLowerCase().includes(value)
+  );
+
+  displayPlaces(filtered);
+
+});
 
 </script>
 
