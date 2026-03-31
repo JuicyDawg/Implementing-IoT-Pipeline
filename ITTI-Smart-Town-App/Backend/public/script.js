@@ -1,6 +1,6 @@
 let allPlaces = [];
 
-// LOAD DATA
+
 function loadPlaces() {
   fetch('/places')
     .then(res => res.json())
@@ -13,7 +13,6 @@ function loadPlaces() {
     });
 }
 
-// DISPLAY
 function displayPlaces(places) {
   const container = document.getElementById("places");
   container.innerHTML = "";
@@ -36,7 +35,7 @@ function displayPlaces(places) {
   });
 }
 
-// FILTER
+
 function filterCategory(category) {
   if (category === 'all') {
     displayPlaces(allPlaces);
@@ -46,7 +45,7 @@ function filterCategory(category) {
   }
 }
 
-// SMART SUGGESTION
+
 function getSmartSuggestion() {
   const pref = localStorage.getItem("userPreference");
 
@@ -72,12 +71,12 @@ function getSmartSuggestion() {
   }
 }
 
-// SAVE PREFERENCE
+
 function savePreference() {
   const pref = document.getElementById("preference").value;
   localStorage.setItem("userPreference", pref);
   alert("Preference saved!");
 }
 
-// AUTO LOAD
+
 loadPlaces();

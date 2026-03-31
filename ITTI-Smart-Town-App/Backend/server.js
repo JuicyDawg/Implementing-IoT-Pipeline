@@ -3,10 +3,10 @@ const path = require('path');
 const app = express();
 const PORT = 3000;
 
-// SERVE FRONTEND
+
 app.use(express.static('public'));
 
-// FORCE ROOT TO LOAD INDEX.HTML ✅ (THIS FIXES YOUR ERROR)
+
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
@@ -39,7 +39,7 @@ const places = [
   }
 ];
 
-// API
+
 app.get('/places', (req, res) => {
   const currentHour = new Date().getHours();
 
@@ -54,7 +54,7 @@ app.get('/places', (req, res) => {
   res.json(updatedPlaces);
 });
 
-// START SERVER
+
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
