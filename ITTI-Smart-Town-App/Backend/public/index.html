@@ -2,53 +2,91 @@
 <html>
 <head>
   <title>ITTI Smart Town</title>
+
+  <style>
+    body {
+      font-family: Arial;
+      text-align: center;
+      margin: 0;
+    }
+
+    h1 {
+      padding: 20px;
+    }
+
+    .container {
+      padding: 20px;
+    }
+
+    button {
+      padding: 10px;
+      margin: 5px;
+    }
+
+    select {
+      padding: 10px;
+      margin-right: 10px;
+    }
+
+    .card {
+      margin: 15px auto;
+      padding: 10px;
+      width: 300px;
+      border: 1px solid black;
+    }
+
+    #mapFrame {
+      margin-top: 20px;
+    }
+  </style>
 </head>
 
-<body style="font-family: Arial; text-align: center;">
+<body>
 
 <h1>ITTI Smart Town App</h1>
 
-<!-- FILTER BUTTONS -->
-<div>
-  <button onclick="filterCategory('all')">All</button>
-  <button onclick="filterCategory('food')">Food</button>
-  <button onclick="filterCategory('fitness')">Fitness</button>
-  <button onclick="filterCategory('health')">Health</button>
+<div class="container">
+
+  
+  <div>
+    <button onclick="filterCategory('all')">All</button>
+    <button onclick="filterCategory('food')">Food</button>
+    <button onclick="filterCategory('fitness')">Fitness</button>
+    <button onclick="filterCategory('health')">Health</button>
+  </div>
+
+  <br>
+
+ 
+  <h2 id="suggestion"></h2>
+  <button onclick="getSmartSuggestion()">Get Recommendation</button>
+
+  <br><br>
+
+  
+  <div>
+    <select id="preference">
+      <option value="food">Food</option>
+      <option value="fitness">Fitness</option>
+      <option value="health">Health</option>
+    </select>
+    <button onclick="savePreference()">Save Preference</button>
+  </div>
+
+  <br>
+
+  
+  <div id="places"></div>
+
+  
+  <h2>Navigation Map</h2>
+  <iframe 
+    id="mapFrame"
+    width="500"
+    height="350">
+  </iframe>
+
 </div>
-
-<br><br>
-
-<!-- RECOMMENDATION -->
-<h2 id="suggestion"></h2>
-<button onclick="getSmartSuggestion()">Get Recommendation</button>
-
-<br><br>
-
-<!-- SAVE PREFERENCE -->
-<div>
-  <select id="preference">
-    <option value="food">Food</option>
-    <option value="fitness">Fitness</option>
-    <option value="health">Health</option>
-  </select>
-  <button onclick="savePreference()">Save Preference</button>
-</div>
-
-<br><br>
-
-<!-- PLACES -->
-<div id="places"></div>
-
-<br><br>
-
-<!-- MAP INSIDE APP -->
-<h2>Navigation Map</h2>
-<iframe 
-  id="mapFrame"
-  width="500"
-  height="350"
-  style="border:0;">
-</iframe>
 
 <script src="script.js"></script>
 

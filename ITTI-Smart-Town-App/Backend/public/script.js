@@ -1,20 +1,17 @@
-// DATA with ITTI + opening hours
+
 const places = [
-  // FOOD
   { name: "ITTI Pizza", category: "food", location: "Iitti Finland pizza", open: 10, close: 22 },
   { name: "ITTI Grill", category: "food", location: "Iitti Finland burger", open: 11, close: 23 },
 
-  // FITNESS
   { name: "ITTI Gym", category: "fitness", location: "Iitti Finland gym", open: 6, close: 22 },
   { name: "ITTI Yoga Center", category: "fitness", location: "Iitti Finland yoga", open: 8, close: 20 },
 
-  // HEALTH
   { name: "ITTI Health Clinic", category: "health", location: "Iitti Finland clinic", open: 8, close: 16 },
   { name: "ITTI Pharmacy", category: "health", location: "Iitti Finland pharmacy", open: 9, close: 18 }
 ];
 
 
-// DISPLAY PLACES WITH TIME + STATUS
+
 function displayPlaces(list) {
   const container = document.getElementById("places");
   container.innerHTML = "";
@@ -25,15 +22,14 @@ function displayPlaces(list) {
     const isOpen = currentHour >= place.open && currentHour < place.close;
 
     const div = document.createElement("div");
+    div.className = "card";
 
     div.innerHTML = `
-      <p><strong>${place.name}</strong> (${place.category})</p>
+      <h3>${place.name}</h3>
+      <p>${place.category}</p>
       <p>Open: ${place.open}:00 - ${place.close}:00</p>
-      <p>Status: <b style="color:${isOpen ? 'green' : 'red'}">
-        ${isOpen ? 'OPEN' : 'CLOSED'}
-      </b></p>
+      <p>Status: ${isOpen ? 'OPEN' : 'CLOSED'}</p>
       <button onclick="navigateTo('${place.location}')">Navigate</button>
-      <hr>
     `;
 
     container.appendChild(div);
@@ -41,7 +37,7 @@ function displayPlaces(list) {
 }
 
 
-// FILTER
+
 function filterCategory(category) {
   if (category === "all") {
     displayPlaces(places);
@@ -52,7 +48,7 @@ function filterCategory(category) {
 }
 
 
-// SAVE PREFERENCE
+
 function savePreference() {
   const value = document.getElementById("preference").value;
   localStorage.setItem("category", value);
@@ -60,7 +56,7 @@ function savePreference() {
 }
 
 
-// SMART RECOMMENDATION (ONLY OPEN PLACES)
+
 function getSmartSuggestion() {
   const saved = localStorage.getItem("category");
 
@@ -84,18 +80,17 @@ function getSmartSuggestion() {
       "We recommend: " + randomPlace.name + " (OPEN NOW)";
   } else {
     document.getElementById("suggestion").innerText =
-      "No places open right now for your preference.";
+      "No places open right now.";
   }
 }
 
 
-// MAP INSIDE APP (ZOOMED TO FINLAND)
+
 function navigateTo(location) {
   const map = document.getElementById("mapFrame");
-
   map.src = "https://www.google.com/maps?q=" + location + "&z=12&output=embed";
 }
 
 
-// LOAD ALL
+
 displayPlaces(places);
