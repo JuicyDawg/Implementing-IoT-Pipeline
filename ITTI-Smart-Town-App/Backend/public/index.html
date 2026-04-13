@@ -3,10 +3,12 @@
 <head>
   <title>ITTI Smart Town</title>
 </head>
+
 <body style="font-family: Arial; text-align: center;">
 
 <h1>ITTI Smart Town App</h1>
 
+<!-- FILTER BUTTONS -->
 <div>
   <button onclick="filterCategory('all')">All</button>
   <button onclick="filterCategory('food')">Food</button>
@@ -16,11 +18,13 @@
 
 <br><br>
 
+<!-- RECOMMENDATION -->
 <h2 id="suggestion"></h2>
 <button onclick="getSmartSuggestion()">Get Recommendation</button>
 
 <br><br>
 
+<!-- SAVE PREFERENCE -->
 <div>
   <select id="preference">
     <option value="food">Food</option>
@@ -32,6 +36,7 @@
 
 <br><br>
 
+<!-- PLACES -->
 <div id="places"></div>
 
 <script src="script.js"></script>

@@ -1,12 +1,20 @@
-// Example places (you can change these later)
+// DATA (2 places per category)
 const places = [
+  // FOOD
   { name: "Pizza Place", category: "food" },
+  { name: "Burger House", category: "food" },
+
+  // FITNESS
   { name: "Gym Center", category: "fitness" },
-  { name: "Health Clinic", category: "health" }
+  { name: "Yoga Studio", category: "fitness" },
+
+  // HEALTH
+  { name: "Health Clinic", category: "health" },
+  { name: "Pharmacy", category: "health" }
 ];
 
 
-// Show places
+// DISPLAY PLACES
 function displayPlaces(list) {
   const container = document.getElementById("places");
   container.innerHTML = "";
@@ -19,7 +27,7 @@ function displayPlaces(list) {
 }
 
 
-// Filter categories
+// FILTER
 function filterCategory(category) {
   if (category === "all") {
     displayPlaces(places);
@@ -30,7 +38,7 @@ function filterCategory(category) {
 }
 
 
-// Save preference
+// SAVE PREFERENCE
 function savePreference() {
   const value = document.getElementById("preference").value;
   localStorage.setItem("category", value);
@@ -38,7 +46,7 @@ function savePreference() {
 }
 
 
-// Get recommendation
+// GET RECOMMENDATION (RANDOM)
 function getSmartSuggestion() {
   const saved = localStorage.getItem("category");
 
@@ -50,14 +58,16 @@ function getSmartSuggestion() {
   const filtered = places.filter(p => p.category === saved);
 
   if (filtered.length > 0) {
+    const randomPlace = filtered[Math.floor(Math.random() * filtered.length)];
+
     document.getElementById("suggestion").innerText =
-      "We recommend: " + filtered[0].name;
+      "We recommend: " + randomPlace.name;
   } else {
     document.getElementById("suggestion").innerText =
-      "No places found for your preference.";
+      "No places found.";
   }
 }
 
 
-// Show all places when page loads
+// LOAD ALL ON START
 displayPlaces(places);
