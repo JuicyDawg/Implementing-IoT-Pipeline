@@ -1,82 +1,63 @@
-let allPlaces = [];
+// Example places (you can change these later)
+const places = [
+  { name: "Pizza Place", category: "food" },
+  { name: "Gym Center", category: "fitness" },
+  { name: "Health Clinic", category: "health" }
+];
 
 
-function loadPlaces() {
-  fetch('/places')
-    .then(res => res.json())
-    .then(data => {
-      allPlaces = data;
-      displayPlaces(data);
-    })
-    .catch(err => {
-      console.error("Error loading places:", err);
-    });
-}
-
-function displayPlaces(places) {
+// Show places
+function displayPlaces(list) {
   const container = document.getElementById("places");
   container.innerHTML = "";
 
-  places.forEach(place => {
-    container.innerHTML += `
-      <div class="section">
-        <h2>${place.name}</h2>
-        <p>${place.description}</p>
-        <p>Category: ${place.category}</p>
-        <p>Status: 
-          <span style="color:${place.status === 'Open' ? 'green' : 'red'}">
-            ${place.status}
-          </span>
-        </p>
-        <p>Distance: ${place.distance} km</p>
-        <p>Estimated time: ${Math.round(place.distance * 12)} min walk</p>
-      </div>
-    `;
+  list.forEach(place => {
+    const p = document.createElement("p");
+    p.innerText = place.name + " (" + place.category + ")";
+    container.appendChild(p);
   });
 }
 
 
+// Filter categories
 function filterCategory(category) {
-  if (category === 'all') {
-    displayPlaces(allPlaces);
+  if (category === "all") {
+    displayPlaces(places);
   } else {
-    const filtered = allPlaces.filter(p => p.category === category);
+    const filtered = places.filter(p => p.category === category);
     displayPlaces(filtered);
   }
 }
 
 
-function getSmartSuggestion() {
-  const pref = localStorage.getItem("userPreference");
-
-  let suggestion;
-
-  if (pref) {
-    suggestion = allPlaces.find(p => p.category === pref);
-  } else {
-    const hour = new Date().getHours();
-
-    if (hour < 11) {
-      suggestion = allPlaces.find(p => p.category === "food");
-    } else if (hour < 18) {
-      suggestion = allPlaces.find(p => p.category === "health");
-    } else {
-      suggestion = allPlaces.find(p => p.category === "fitness");
-    }
-  }
-
-  if (suggestion) {
-    document.getElementById("suggestion").innerHTML =
-      "Recommended: " + suggestion.name;
-  }
-}
-
-
+// Save preference
 function savePreference() {
-  const pref = document.getElementById("preference").value;
-  localStorage.setItem("userPreference", pref);
+  const value = document.getElementById("preference").value;
+  localStorage.setItem("category", value);
   alert("Preference saved!");
 }
 
 
-loadPlaces();
+// Get recommendation
+function getSmartSuggestion() {
+  const saved = localStorage.getItem("category");
+
+  if (!saved) {
+    document.getElementById("suggestion").innerText = "No preference saved!";
+    return;
+  }
+
+  const filtered = places.filter(p => p.category === saved);
+
+  if (filtered.length > 0) {
+    document.getElementById("suggestion").innerText =
+      "We recommend: " + filtered[0].name;
+  } else {
+    document.getElementById("suggestion").innerText =
+      "No places found for your preference.";
+  }
+}
+
+
+// Show all places when page loads
+displayPlaces(places);
