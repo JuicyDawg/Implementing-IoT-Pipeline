@@ -1,33 +1,38 @@
-// DATA (2 places per category)
 const places = [
-  // FOOD
-  { name: "Pizza Place", category: "food" },
-  { name: "Burger House", category: "food" },
+  
+  { name: "ITTI Pizza", category: "food", location: "ITTI Finland pizza" },
+  { name: "ITTI Grill", category: "food", location: "ITTI Finland burger" },
 
-  // FITNESS
-  { name: "Gym Center", category: "fitness" },
-  { name: "Yoga Studio", category: "fitness" },
+  
+  { name: "ITTI Gym", category: "fitness", location: "ITTI Finland gym" },
+  { name: "ITTI Yoga Center", category: "fitness", location: "ITTI Finland yoga" },
 
-  // HEALTH
-  { name: "Health Clinic", category: "health" },
-  { name: "Pharmacy", category: "health" }
+  
+  { name: "ITTI Health Clinic", category: "health", location: "ITTI Finland clinic" },
+  { name: "ITTI Pharmacy", category: "health", location: "ITTI Finland pharmacy" }
 ];
 
 
-// DISPLAY PLACES
+
 function displayPlaces(list) {
   const container = document.getElementById("places");
   container.innerHTML = "";
 
   list.forEach(place => {
-    const p = document.createElement("p");
-    p.innerText = place.name + " (" + place.category + ")";
-    container.appendChild(p);
+    const div = document.createElement("div");
+
+    div.innerHTML = `
+      <p><strong>${place.name}</strong> (${place.category})</p>
+      <button onclick="navigateTo('${place.location}')">Navigate</button>
+      <hr>
+    `;
+
+    container.appendChild(div);
   });
 }
 
 
-// FILTER
+
 function filterCategory(category) {
   if (category === "all") {
     displayPlaces(places);
@@ -38,7 +43,7 @@ function filterCategory(category) {
 }
 
 
-// SAVE PREFERENCE
+
 function savePreference() {
   const value = document.getElementById("preference").value;
   localStorage.setItem("category", value);
@@ -46,7 +51,7 @@ function savePreference() {
 }
 
 
-// GET RECOMMENDATION (RANDOM)
+
 function getSmartSuggestion() {
   const saved = localStorage.getItem("category");
 
@@ -69,5 +74,12 @@ function getSmartSuggestion() {
 }
 
 
-// LOAD ALL ON START
+
+function navigateTo(location) {
+  const url = "https://www.google.com/maps/search/" + location;
+  window.open(url, "_blank");
+}
+
+
+
 displayPlaces(places);
