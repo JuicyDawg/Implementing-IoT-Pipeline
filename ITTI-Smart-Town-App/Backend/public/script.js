@@ -26,7 +26,7 @@ function displayPlaces(list) {
 
     div.innerHTML = `
       <h3>${place.name}</h3>
-      <p>${place.category}</p>
+      <p>Category: ${place.category}</p>
       <p>Open: ${place.open}:00 - ${place.close}:00</p>
       <p>Status: ${isOpen ? 'OPEN' : 'CLOSED'}</p>
       <button onclick="navigateTo('${place.location}')">Navigate</button>

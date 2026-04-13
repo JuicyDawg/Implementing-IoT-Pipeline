@@ -6,12 +6,16 @@
   <style>
     body {
       font-family: Arial;
+      background: #f2f2f2;
       text-align: center;
       margin: 0;
     }
 
     h1 {
-      padding: 20px;
+      background: black;
+      color: white;
+      padding: 15px;
+      margin: 0;
     }
 
     .container {
@@ -19,24 +23,42 @@
     }
 
     button {
-      padding: 10px;
+      padding: 10px 15px;
       margin: 5px;
+      border-radius: 6px;
+      border: 1px solid black;
+      background: white;
+      cursor: pointer;
     }
 
     select {
       padding: 10px;
-      margin-right: 10px;
+      border-radius: 6px;
+      border: 1px solid black;
     }
 
     .card {
+      background: white;
       margin: 15px auto;
-      padding: 10px;
-      width: 300px;
+      padding: 15px;
+      width: 320px;
+      border-radius: 8px;
       border: 1px solid black;
+      text-align: left;
+    }
+
+    .card h3 {
+      margin: 0 0 5px 0;
+    }
+
+    .card p {
+      margin: 4px 0;
     }
 
     #mapFrame {
       margin-top: 20px;
+      border: 1px solid black;
+      border-radius: 8px;
     }
   </style>
 </head>
@@ -57,13 +79,13 @@
 
   <br>
 
- 
+  
   <h2 id="suggestion"></h2>
   <button onclick="getSmartSuggestion()">Get Recommendation</button>
 
   <br><br>
 
-  
+ 
   <div>
     <select id="preference">
       <option value="food">Food</option>
@@ -78,7 +100,7 @@
   
   <div id="places"></div>
 
-  
+  <!-- MAP -->
   <h2>Navigation Map</h2>
   <iframe 
     id="mapFrame"
