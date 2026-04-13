@@ -1,16 +1,16 @@
-// DATA with opening hours
+// DATA with ITTI + opening hours
 const places = [
   // FOOD
-  { name: "ITTI Pizza", category: "food", location: "ITTI Finland pizza", open: 10, close: 22 },
-  { name: "ITTI Grill", category: "food", location: "ITTI Finland burger", open: 11, close: 23 },
+  { name: "ITTI Pizza", category: "food", location: "Iitti Finland pizza", open: 10, close: 22 },
+  { name: "ITTI Grill", category: "food", location: "Iitti Finland burger", open: 11, close: 23 },
 
   // FITNESS
-  { name: "ITTI Gym", category: "fitness", location: "ITTI Finland gym", open: 6, close: 22 },
-  { name: "ITTI Yoga Center", category: "fitness", location: "ITTI Finland yoga", open: 8, close: 20 },
+  { name: "ITTI Gym", category: "fitness", location: "Iitti Finland gym", open: 6, close: 22 },
+  { name: "ITTI Yoga Center", category: "fitness", location: "Iitti Finland yoga", open: 8, close: 20 },
 
   // HEALTH
-  { name: "ITTI Health Clinic", category: "health", location: "ITTI Finland clinic", open: 8, close: 16 },
-  { name: "ITTI Pharmacy", category: "health", location: "ITTI Finland pharmacy", open: 9, close: 18 }
+  { name: "ITTI Health Clinic", category: "health", location: "Iitti Finland clinic", open: 8, close: 16 },
+  { name: "ITTI Pharmacy", category: "health", location: "Iitti Finland pharmacy", open: 9, close: 18 }
 ];
 
 
@@ -89,10 +89,11 @@ function getSmartSuggestion() {
 }
 
 
-// MAP INSIDE APP (NO NEW TAB)
+// MAP INSIDE APP (ZOOMED TO FINLAND)
 function navigateTo(location) {
   const map = document.getElementById("mapFrame");
-  map.src = "https://www.google.com/maps?q=" + location + "&output=embed";
+
+  map.src = "https://www.google.com/maps?q=" + location + "&z=12&output=embed";
 }
 
 
